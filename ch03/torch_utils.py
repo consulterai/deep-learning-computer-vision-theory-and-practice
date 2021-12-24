@@ -1,5 +1,7 @@
+import torch
 from ptflops import get_model_complexity_info
 from torchvision.models import resnet18
+
 
 
 def GET_FLOPS(model, shape):
