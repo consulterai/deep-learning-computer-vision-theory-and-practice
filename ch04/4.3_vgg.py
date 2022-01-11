@@ -22,7 +22,7 @@ class VGG(nn.Module):
         self.features = features
 
         self.classifier = nn.Sequential(
-            nn.Linear(512, 4096),
+            nn.Linear(7 * 7 * 512, 4096),
             nn.ReLU(inplace=True),
             nn.Dropout(),
             nn.Linear(4096, 4096),
@@ -78,5 +78,5 @@ def vgg19_bn():
 
 if __name__ == '__main__':
     model = vgg19_bn()
-    GET_FLOPS(model, [1, 3, 32, 32])
-    VISUALISE_MODEL(model, torch.randn([1, 3, 32, 32]), "vgg")
+    GET_FLOPS(model, [1, 3, 224, 224])
+    VISUALISE_MODEL(model, torch.randn([1, 3, 224, 224]), "vgg")
